@@ -1,7 +1,7 @@
 -- final table reorganization and formatting after reconsideration to export it for further Analysis and transformations
 SELECT 
   [Report_ID] as [Report ID],
-  FORMAT([Reported_Date] , 'dd-MM-yyyy') AS [Reported Date], -- formatting date values to correcpond to widely used European standard of dd-mm-yyyy
+  FORMAT([Reported_Date] , 'dd-MM-yyyy') AS [Reported Date], -- formatting date values to correspond to widely used European standard of dd-mm-yyyy
   FORMAT([Crime_Period_From], 'dd-MM-yyyy HH:mm') as [Crime Period From],  
   FORMAT([Crime_Period_To], 'dd-MM-yyyy HH:mm') as [Crime Period To],
   DATEDIFF(
@@ -24,6 +24,6 @@ SELECT
 	    ELSE [Further_Information]
 	    END -- additionally formatting information column to exclude recurring irrelevant word 'other'
 	)
-  ) AS [Crime Description] --combining crime description information into a single column to save space and relevancy
+  ) AS [Crime Description] -- combining crime description information into a single column to save space and relevancy
 FROM 
   [ProjectOneBikeStudy].[dbo].[pbrBikeTheftStats]
