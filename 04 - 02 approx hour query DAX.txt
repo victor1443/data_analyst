@@ -1,0 +1,14 @@
+Approx Hour Of Theft = 
+
+VAR calcNor = (HOUR(pbrFormattedBikeTheftStats[Crime Period From]) + HOUR(pbrFormattedBikeTheftStats[Crime Period To])) / 2
+VAR calcRev = calcNor - 12
+VAR approxHour =   IF(
+    (HOUR(pbrFormattedBikeTheftStats[Crime Period From]) > 12 && HOUR(pbrFormattedBikeTheftStats[Crime Period To]) < 12 && HOUR(pbrFormattedBikeTheftStats[Crime Period To]) <> 0 && calcNor > 12) 
+    || (HOUR(pbrFormattedBikeTheftStats[Crime Period From]) < 12 && HOUR(pbrFormattedBikeTheftStats[Crime Period To]) > 12 && HOUR(pbrFormattedBikeTheftStats[Crime Period From]) <> 0 && calcNor > 12),
+    calcRev,
+    calcNor
+  )
+RETURN
+ROUND(approxHour, 0)
+
+  
